@@ -1,12 +1,10 @@
 <h1>Blog</h1>
-{% if no_blogs == 1 %}
-<h2>Andrei has written {{ no_blogs }} blog</h2>
-{% else %}
-<h2>Andrei has written {{ no_blogs }} blogs</h2>
-{% endif %}
+
+<h2>Andrei has written {{ no_blogs }} blog{{ blogs.count|pluralize }}</h2>
+
 
 {% for blog in blogs %}
-<h3><a href="#">{{ blog.title }}</a></h3>
+<a href="{% url 'blog:detail' blog.id %}"><h3>{{ blog.title }}</h3></a>
 <h5>{{ blog.date }}</h5>
-<p>{{ blog.description }}</p>
+<p>{{ blog.description|striptags|truncatechars:100 }}</p>
 {% endfor %}
