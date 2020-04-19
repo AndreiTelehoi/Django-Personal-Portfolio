@@ -1,0 +1,12 @@
+<h1>Blog</h1>
+{% if no_blogs == 1 %}
+<h2>Andrei has written {{ no_blogs }} blog</h2>
+{% else %}
+<h2>Andrei has written {{ no_blogs }} blogs</h2>
+{% endif %}
+
+{% for blog in blogs %}
+<h3><a href="#">{{ blog.title }}</a></h3>
+<h5>{{ blog.date }}</h5>
+<p>{{ blog.description }}</p>
+{% endfor %}
